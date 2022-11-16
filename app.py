@@ -55,7 +55,7 @@ def message_text(event):
     print('user_id:' + user_id)
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text="leona: " + event.message.text)
+        TextSendMessage(text="exhibition: " + event.message.text)
     )
 
 
