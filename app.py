@@ -53,10 +53,17 @@ def callback():
 def message_text(event):
     user_id = event.source.user_id
     print('user_id:' + user_id)
+<<<<<<< HEAD
+    # line_bot_api.reply_message(event.reply_token, TextSendMessage(text="reply: "+event.message.text))
+    if event.message.text == 'test':
+        print('test success')
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text+' success!'))
+=======
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text="exhibition: " + event.message.text)
     )
+>>>>>>> 26f1ee97c490915563f5dd7e31c352beb7ac65e6
 
 
 if __name__ == "__main__":
