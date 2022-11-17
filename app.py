@@ -13,7 +13,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,
 )
 
 app = Flask(__name__)
@@ -62,9 +62,10 @@ def message_text(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text + ' success!'))
     elif event.message.text == 'picture':
         print('picture get')
-        line_bot_api.reply_message(event.reply_token,
-                                   ImageSendMessage(original_content_url='https://mocfile.moc.gov.tw/activitySones/userFiles/CKSMH/JpgFile/01/04758/04758.jpg', preview_image_url='https://mocfile.moc.gov.tw/activitySones/userFiles/CKSMH/JpgFile/01/04758/04758.jpg'))
-        # https://mocfile.moc.gov.tw/activitySones/userFiles/CKSMH/JpgFile/01/04758/04758.jpg
+        line_bot_api.reply_message(event.reply_token, ImageSendMessage(
+            original_content_url='https://images.builderservices.io/s/cdn/v1.0/i/m?url=https%3A%2F%2Fstorage.googleapis.com%2Fproduction-bluehost-v1-0-9%2F659%2F790659%2FAtmP8Pmy%2F9c8c1e647eb14e01898043c0c60bf03a&methods=resize%2C1000%2C5000',
+            preview_image_url='https://images.builderservices.io/s/cdn/v1.0/i/m?url=https%3A%2F%2Fstorage.googleapis.com%2Fproduction-bluehost-v1-0-9%2F659%2F790659%2FAtmP8Pmy%2Ffd2258c5ea6c43f591e8d9930d152b94&methods=resize%2C1000%2C5000'
+        ))
     else:
         print('else')
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="reply: " + event.message.text))
