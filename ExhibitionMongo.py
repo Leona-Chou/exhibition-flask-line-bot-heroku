@@ -17,9 +17,11 @@ def InitMongo():
 
 def AddUserId(UserId):
     db = InitMongo()
-    db.users.insert_one({
-        "User_Id": UserId
-    })
+    res = db.users.count_documents({'User_id': UserId})
+    if res == 0:
+        db.users.insert_one({
+            "User_Id": UserId
+        })
 
 def AddExhibition(ExhibitionList):
     db = InitMongo()
