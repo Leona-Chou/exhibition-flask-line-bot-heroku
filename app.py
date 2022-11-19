@@ -58,7 +58,7 @@ def message_text(event):
     user_id = event.source.user_id
 
     # 存取user_id
-    ExhibitionMongo.AddUserId(user_id+'')
+    # ExhibitionMongo.AddUserId(user_id+'')
 
     # line_bot_api.reply_message(event.reply_token, TextSendMessage(text="reply: "+event.message.text))
     if event.message.text == 'test':  # 測試 text
