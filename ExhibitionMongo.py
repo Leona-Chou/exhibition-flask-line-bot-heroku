@@ -23,8 +23,6 @@ def AddUserId(UserId):
             "User_Id": UserId
         })
         print('User_Id success')
-    else:
-        print('User_Id existed')
 
 def AddExhibition(ExhibitionList):
     db = InitMongo()
