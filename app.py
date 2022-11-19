@@ -56,7 +56,6 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
     user_id = event.source.user_id
-    console.log('使用者ID：', user_id)
 
     # 存取user_id
     ExhibitionMongo.AddUserId(user_id+'')
