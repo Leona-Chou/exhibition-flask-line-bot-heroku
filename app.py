@@ -60,13 +60,12 @@ def message_text(event):
     if event.message.text == 'test':  # 測試
         print('test success')
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text + ' success!'))
-    elif event.message.text == 'picture':
-        print('picture get')
-        line_bot_api.reply_message(event.reply_token, ImageSendMessage(
-            original_content_url='https://mocfile.moc.gov.tw/activitySones/userFiles/CKSMH/JpgFile/01/04758/04758.jpg',
-            preview_image_url='https://mocfile.moc.gov.tw/activitySones/userFiles/CKSMH/JpgFile/01/04758/04758.jpg'
-        # https://mocfile.moc.gov.tw/activitySones/userFiles/CKSMH/JpgFile/01/04758/04758.jpg
-        ))
+    # elif event.message.text == 'picture':
+    #     print('picture get')
+    #     line_bot_api.reply_message(event.reply_token, ImageSendMessage(
+    #         original_content_url='https://mocfile.moc.gov.tw/activitySones/userFiles/CKSMH/JpgFile/01/04758/04758.jpg',
+    #         preview_image_url='https://mocfile.moc.gov.tw/activitySones/userFiles/CKSMH/JpgFile/01/04758/04758.jpg'
+    #     ))
     else:
         print('else')
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="reply: " + event.message.text))
