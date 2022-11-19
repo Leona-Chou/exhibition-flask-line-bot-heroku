@@ -62,4 +62,4 @@ def GetExhibitions():
 # AddExhibition(ExhibitionList)
 # RemoveExhibition("2330")
 # print(GetExhibitions())
-AddUserId('U355e7537484ebee1d8b05fa42be9defd')
+# AddUserId('U355e7537484ebee1d8b05fa42be9defd')
