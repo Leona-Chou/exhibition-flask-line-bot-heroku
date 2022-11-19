@@ -62,6 +62,7 @@ def message_text(event):
     if event.message.text == 'test':  # 測試
         print('test success')
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text + ' success!'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='id: ' + user_id))
     elif event.message.text == 'picture':
         print('picture get')
         line_bot_api.reply_message(event.reply_token, ImageSendMessage(
