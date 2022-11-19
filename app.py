@@ -1,7 +1,7 @@
 # https://github.com/line/line-bot-sdk-python/blob/master/examples/flask-echo/app_with_handler.py
 
 import os
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 import sys
 from argparse import ArgumentParser
 from flask import Flask, request, abort
@@ -16,12 +16,12 @@ from linebot.models import (
 )
 from werkzeug.debug import console
 
-import ExhibitionMongo
+# import ExhibitionMongo
 
 app = Flask(__name__)
 
 # get channel_secret and channel_access_token from your environment variable
-# load_dotenv()
+load_dotenv()
 channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
 channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
 if channel_secret is None:
@@ -60,7 +60,6 @@ def message_text(event):
     # 存取user_id
     # ExhibitionMongo.AddUserId(user_id+'')
 
-    # line_bot_api.reply_message(event.reply_token, TextSendMessage(text="reply: "+event.message.text))
     if event.message.text == 'test':  # 測試 text
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text + ' success!'))
         print('test success')
