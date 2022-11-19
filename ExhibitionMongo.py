@@ -6,7 +6,7 @@ import ExhibitionInfo
 ExhibitionList = ExhibitionInfo.GetExihibitionInfo()
 load_dotenv()
 
-MONGODB_URL = os.getenv('mongodb+srv://LeonaChou:Leona1234@cluster0.pl2gskx.mongodb.net/?retryWrites=true&w=majority',None)
+MONGODB_URL = os.getenv('MONGODB_URL',None)
 DATABASE_NAME = 'ExhibitionLineBot'
 COLLECTION_NAME = 'exhibition'
 
