@@ -22,6 +22,9 @@ def AddUserId(UserId):
         db.users.insert_one({
             "User_Id": UserId
         })
+        print('success')
+    else:
+        print('existed')
 
 def AddExhibition(ExhibitionList):
     db = InitMongo()
@@ -37,7 +40,7 @@ def AddExhibition(ExhibitionList):
                 "ExhibitionLink": Exhibition['ExhibitionLink'],
                 "ImgLink": Exhibition['ImgLink']
             })
-            print('資料庫更新')  # TODO: 更新資料庫
+            print('success')  # TODO: 更新資料庫
         elif False:  # 有展覽結束
             # TODO: 將展覽資訊添加到展覽回顧資料表, 並從當前展覽資料表刪除
             pass
