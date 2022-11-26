@@ -58,10 +58,10 @@ def message_text(event):
     user_id = event.source.user_id
 
     # 存取user_id
-    # ExhibitionMongo.AddUserId(user_id)
+    ExhibitionMongo.AddUserId(user_id)
 
     if event.message.text == 'test':  # 測試 text
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text + user_id + ' success!'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text + ' success!'))
         print('test success')
     elif event.message.text == 'picture':  # 測試 picture
         line_bot_api.reply_message(event.reply_token, ImageSendMessage(
@@ -69,10 +69,10 @@ def message_text(event):
             preview_image_url='https://mocfile.moc.gov.tw/activitySones/userFiles/CKSMH/JpgFile/01/04758/04758.jpg'
         ))
         print('picture get')
-    elif event.message.text == '功能':
-        pass
+    elif event.message.text == 'sticker':
+        line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=1, sticker_id=2))
     else:
-        # line_bot_api.reply_message(event.reply_token, TextSendMessage(text="reply: " + event.message.text))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="reply: " + event.message.text))
         print('else')
 
 
