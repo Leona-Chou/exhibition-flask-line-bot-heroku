@@ -81,12 +81,12 @@ def message_text(event):
                 "emojiId": "001"
             },
             {
-                "index": 1,
+                "index": 13,
                 "productId": "5ac1bfd5040ab15980c9b435",
                 "emojiId": "002"
             }
         ]
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='$$ 09 回覆emoji訊息', emojis=emoji))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='$ LINE emoji $', emojis=emoji))
     elif event.message.text == '1':
         pass
     else:
