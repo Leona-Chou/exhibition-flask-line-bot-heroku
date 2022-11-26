@@ -56,7 +56,23 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
     user_id = event.source.user_id
-
+    emoji = [
+        {
+            "index": 0,
+            "productId": "5ac21a8c040ab15980c9b43f",
+            "emojiId": "004"
+        },
+        {
+            "index": 1,
+            "productId": "5ac21a8c040ab15980c9b43f",
+            "emojiId": "001"
+        },
+        {
+            "index": 2,
+            "productId": "5ac21a8c040ab15980c9b43f",
+            "emojiId": "025"
+        },
+    ]
     # 存取user_id
     ExhibitionMongo.AddUserId(user_id)
 
@@ -74,23 +90,6 @@ def message_text(event):
         line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=1, sticker_id=2))
     elif event.message.text == 'emoji':
         # line emoji代碼對照表 https://developers.line.biz/en/docs/messaging-api/emoji-list/#line-emoji-definitions
-        emoji = [
-            {
-                "index": 0,
-                "productId": "5ac21a8c040ab15980c9b43f",
-                "emojiId": "004"
-            },
-            {
-                "index": 1,
-                "productId": "5ac21a8c040ab15980c9b43f",
-                "emojiId": "001"
-            },
-            {
-                "index": 2,
-                "productId": "5ac21a8c040ab15980c9b43f",
-                "emojiId": "025"
-            },
-        ]
         message = TextSendMessage(text='$$$ 09 回覆emoji訊息', emojis=emoji)
         line_bot_api.reply_message(event.reply_token, message)
     elif event.message.text == '1':
