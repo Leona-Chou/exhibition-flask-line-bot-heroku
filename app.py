@@ -77,14 +77,19 @@ def message_text(event):
         emoji = [
             {
                 "index": 0,
-                "productId": "5ac1bfd5040ab15980c9b435",
+                "productId": "5ac21a8c040ab15980c9b43f",
+                "emojiId": "004"
+            },
+            {
+                "index": 1,
+                "productId": "5ac21a8c040ab15980c9b43f",
                 "emojiId": "001"
             },
             {
-                "index": 13,
-                "productId": "5ac1bfd5040ab15980c9b435",
-                "emojiId": "002"
-            }
+                "index": 2,
+                "productId": "5ac21a8c040ab15980c9b43f",
+                "emojiId": "025"
+            },
         ]
         message = TextSendMessage(text='$$$ 09 回覆emoji訊息', emojis=emoji)
         line_bot_api.reply_message(event.reply_token, message)
