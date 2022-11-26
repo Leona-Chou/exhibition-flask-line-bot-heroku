@@ -12,7 +12,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage, StickerSendMessage,
+    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage, StickerSendMessage
 )
 from werkzeug.debug import console
 
