@@ -75,6 +75,7 @@ def message_text(event):
             package_id='6632',
             sticker_id='11825376'
         ))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text))
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="reply: " + event.message.text))
         print('else')
