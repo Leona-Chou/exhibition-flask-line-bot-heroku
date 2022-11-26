@@ -69,8 +69,31 @@ def message_text(event):
             preview_image_url='https://mocfile.moc.gov.tw/activitySones/userFiles/CKSMH/JpgFile/01/04758/04758.jpg'
         ))
         print('picture get')
-    elif event.message.text == 'sticker':
+    elif event.message.text == 'sticker':  # 測試貼圖
+        # 貼圖與代碼對照表 https://developers.line.me/media/messaging-api/messages/sticker_list.pdf
         line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=1, sticker_id=2))
+    elif event.message.text == '':
+        # line emoji代碼對照表 https://developers.line.biz/en/docs/messaging-api/emoji-list/#line-emoji-definitions
+        emoji = [
+            {
+                "index": 0,
+                "productId": "5ac21a8c040ab15980c9b43f",
+                "emojiId": "004"
+            },
+            {
+                "index": 1,
+                "productId": "5ac21a8c040ab15980c9b43f",
+                "emojiId": "001"
+            },
+            {
+                "index": 2,
+                "productId": "5ac21a8c040ab15980c9b43f",
+                "emojiId": "025"
+            },
+        ]
+        line_bot_api.reply_message(event.reply_token,message=TextSendMessage(text='$$$ 09 回覆emoji訊息', emojis=emoji))
+    elif event.message.text == '1':
+        pass
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="reply: " + event.message.text))
         print('else')
