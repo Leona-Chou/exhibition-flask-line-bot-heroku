@@ -81,7 +81,7 @@ def message_text(event):
                 "emojiId": "001"
             },
             {
-                "index": 13,
+                "index": 1,
                 "productId": "5ac1bfd5040ab15980c9b435",
                 "emojiId": "002"
             }
