@@ -61,7 +61,7 @@ def message_text(event):
     # ExhibitionMongo.AddUserId(user_id)
 
     if event.message.text == 'test':  # 測試 text
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text + ' success!'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text + user_id + ' success!'))
         print('test success')
     elif event.message.text == 'picture':  # 測試 picture
         line_bot_api.reply_message(event.reply_token, ImageSendMessage(
