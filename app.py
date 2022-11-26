@@ -88,13 +88,11 @@ def message_text(event):
     elif event.message.text == 'sticker':  # 測試貼圖
         # 貼圖與代碼對照表 https://developers.line.me/media/messaging-api/messages/sticker_list.pdf
         line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=1, sticker_id=2))
-    elif event.message.text == 'emoji':
+    elif event.message.text == '功能':
         # line emoji代碼對照表 https://developers.line.biz/en/docs/messaging-api/emoji-list/#line-emoji-definitions
         line_bot_api.reply_message(event.reply_token, TextSendMessage(
             text='\U0001F449輸入編號來查詢想要的資訊：\n\n1. 中正紀念堂展覽資訊\n\n(其他展覽資訊還在開發中，暫無提供\U0001F62D)'
         ))
-    elif event.message.text == '1':
-        pass
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="reply: " + event.message.text))
         print('else')
