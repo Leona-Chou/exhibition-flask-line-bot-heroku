@@ -72,7 +72,7 @@ def message_text(event):
     elif event.message.text == '功能':
         pass
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="reply: " + event.message.text))
+        # line_bot_api.reply_message(event.reply_token, TextSendMessage(text="reply: " + event.message.text))
         print('else')
 
 
