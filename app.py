@@ -63,13 +63,13 @@ def message_text(event):
     if event.message.text == 'test':  # 測試 text
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text + ' success!'))
         print('test success')
-    elif event.message.text == 'picture': # 測試 picture
+    elif event.message.text == 'picture':  # 測試 picture
         line_bot_api.reply_message(event.reply_token, ImageSendMessage(
             original_content_url='https://mocfile.moc.gov.tw/activitySones/userFiles/CKSMH/JpgFile/01/04758/04758.jpg',
             preview_image_url='https://mocfile.moc.gov.tw/activitySones/userFiles/CKSMH/JpgFile/01/04758/04758.jpg'
         ))
         print('picture get')
-    elif event.message.text == 'sticker': # 測試貼圖
+    elif event.message.text == 'sticker':  # 測試貼圖
         # 貼圖查詢：https://developers.line.biz/en/docs/messaging-api/sticker-list/#specify-sticker-in-message-object
         line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id='1', sticker_id='1'))
     else:
