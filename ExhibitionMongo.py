@@ -10,10 +10,12 @@ MONGODB_URL = os.getenv('MONGODB_URL', None)
 DATABASE_NAME = 'ExhibitionLineBot'
 COLLECTION_NAME = 'exhibition'
 
+
 def InitMongo():
     client = MongoClient(MONGODB_URL, ssl=True, ssl_cert_reqs='CERT_NONE')
     db = client[DATABASE_NAME]
     return db
+
 
 def AddUserId(UserId):
     db = InitMongo()
@@ -22,7 +24,8 @@ def AddUserId(UserId):
         db.users.insert_one({
             "User_Id": UserId
         })
-        print('User_Id success')
+        # print('User_Id success')
+
 
 def AddExhibition(ExhibitionList):
     db = InitMongo()
@@ -38,18 +41,21 @@ def AddExhibition(ExhibitionList):
                 "ExhibitionLink": Exhibition['ExhibitionLink'],
                 "ImgLink": Exhibition['ImgLink']
             })
-            print('Exhibition success')  # TODO: 更新資料庫
+            # print('Exhibition success')  # TODO: 更新資料庫
         elif False:  # 有展覽結束
             # TODO: 將展覽資訊添加到展覽回顧資料表, 並從當前展覽資料表刪除
             pass
         else:  # 展覽資訊無異動, 無需做任何動作
-            print('Exhibition existed')
+            # print('Exhibition existed')
+            pass
+
 
 def RemoveExhibition(Title):
     db = InitMongo()
     db.exhibitions.delete_one({
         "Title": Title
     })
+
 
 def GetExhibitions():
     db = InitMongo()
