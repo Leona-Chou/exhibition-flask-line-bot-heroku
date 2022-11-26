@@ -71,7 +71,7 @@ def message_text(event):
             "index": 2,
             "productId": "5ac1bfd5040ab15980c9b435",
             "emojiId": "061"
-        },
+        }
     ]
     # 存取user_id
     ExhibitionMongo.AddUserId(user_id)
