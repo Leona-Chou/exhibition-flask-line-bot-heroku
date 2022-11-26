@@ -90,7 +90,7 @@ def message_text(event):
         line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=1, sticker_id=2))
     elif event.message.text == 'emoji':
         # line emoji代碼對照表 https://developers.line.biz/en/docs/messaging-api/emoji-list/#line-emoji-definitions
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='\U0001F449輸入編號來查詢想要的資訊：\n1. 中正紀念堂展覽資訊\n\n(其他展覽資訊開發中，暫無提供\U0001F62D)'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='\U0001F449輸入編號來查詢想要的資訊：\n\n1. 中正紀念堂展覽資訊\n\n(其他展覽資訊開發中，暫無提供\U0001F62D)'))
     elif event.message.text == '1':
         pass
     else:
