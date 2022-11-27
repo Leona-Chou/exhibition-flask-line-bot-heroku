@@ -45,9 +45,6 @@ def AddExhibition(ExhibitionList):
                 "ImgLink": Exhibition['ImgLink']
             })
             print('Exhibition success')
-        else:  # 有在資料庫中，無異動
-            print('Exhibition existed')
-            pass
 
 
 # 刪除展覽資訊
