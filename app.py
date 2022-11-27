@@ -16,6 +16,7 @@ from linebot.models import (
 )
 from werkzeug.debug import console
 
+import ExhibitionInfo
 import ExhibitionMongo
 
 app = Flask(__name__)
@@ -96,10 +97,10 @@ def message_text(event):
         ))
         print('功能 get')
     elif event.message.text == '1':
-        lists = ExhibitionMongo.GetExhibitions()
+        lists = ExhibitionInfo.GetExihibitionInfo()
         message = ''
         for list in lists:
-            message + list['Title'] + '\t' + list['StartDate'] + '\t' + list['EndDate'] + '\t' + list['Time'] + '\t' + list[
+            message = message + list['Title'] + '\t' + list['StartDate'] + '\t' + list['EndDate'] + '\t' + list['Time'] + '\t' + list[
             'Location'] + '\t' + list['ExhibitionLink'] + '\n'
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=message))
         print('1 get')
