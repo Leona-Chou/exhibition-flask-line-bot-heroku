@@ -15,8 +15,8 @@ def GetExihibitionInfo():
         Soup = BeautifulSoup(Response.content, "html.parser")
 
         # 從 HTML 抓取內容
-        Titles = Soup.find_all('div', class_='h3')  # 展名
-        Dates = Soup.find_all('span', class_='date')  # 展期
+        Titles = Soup.find_all('div', class_='h3')            # 展名
+        Dates = Soup.find_all('span', class_='date')          # 展期
         Locations = Soup.find_all('span', class_='location')  # 地點
 
         # 處理資料並存入 dictionary
@@ -34,13 +34,13 @@ def GetExihibitionInfo():
             ImgLink = ImgLinkTmp.find('img').get('src')
 
             Dict = {
-                'Title': Title,  # 展名
+                'Title': Title,          # 展名
                 'StartDate': StartDate,  # 起始日
-                'EndDate': EndDate,  # 結束日
-                'Time': DateTime,  # 時間
-                'Location': Location,  # 地點
+                'EndDate': EndDate,      # 結束日
+                'Time': DateTime,        # 時間
+                'Location': Location,    # 地點
                 'ExhibitionLink': Link,  # 連結
-                'ImgLink': ImgLink  # 圖片
+                'ImgLink': ImgLink       # 圖片
             }
             ExihibitionList.append(Dict)
 
