@@ -11,12 +11,14 @@ DATABASE_NAME = 'ExhibitionLineBot'
 COLLECTION_NAME = 'exhibition'
 
 
+# 初始化
 def InitMongo():
     client = MongoClient(MONGODB_URL, ssl=True, ssl_cert_reqs='CERT_NONE')
     db = client[DATABASE_NAME]
     return db
 
 
+# 新增用戶ID
 def AddUserId(UserId):
     db = InitMongo()
     res = db.users.count_documents({'User_Id': UserId})  # 数据在mongo中出现的次数
@@ -27,6 +29,7 @@ def AddUserId(UserId):
         # print('User_Id success')
 
 
+# 新增展覽資訊
 def AddExhibition(ExhibitionList):
     db = InitMongo()
     for Exhibition in ExhibitionList:
@@ -50,6 +53,7 @@ def AddExhibition(ExhibitionList):
             pass
 
 
+# 刪除展覽資訊
 def RemoveExhibition(Title):
     db = InitMongo()
     db.exhibitions.delete_one({
@@ -57,6 +61,7 @@ def RemoveExhibition(Title):
     })
 
 
+# 取得展覽資訊
 def GetExhibitions():
     db = InitMongo()
     cursor = db.exhibitions.find()
