@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 CKSMH_URL = 'https://www.cksmh.gov.tw/activitysoonlist_369'  # 中正紀念堂展館
 
@@ -28,8 +29,8 @@ def GetExihibitionInfo():
             Title = Titles[i].text
             Date = Dates[i].text
             DateList = Date.replace(' ~ ', '').replace(' ', '').replace('\n', ',').split(',')
-            StartDate = DateList[2]
-            EndDate = DateList[3]
+            StartDate = datetime.strptime(DateList[2], '%Y/%m/%d')
+            EndDate = datetime.strptime(DateList[3], '%Y/%m/%d')
             DateTime = DateList[4]
             Location = Locations[i].text.strip('地點：')
             Link = Soup.find('a', title=Title+'「另開新視窗」').get('href')
