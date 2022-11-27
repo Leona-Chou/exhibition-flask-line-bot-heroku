@@ -5,11 +5,6 @@ from datetime import datetime
 CKSMH_URL = 'https://www.cksmh.gov.tw/activitysoonlist_369'  # 中正紀念堂展館
 
 
-def CheckUpdate():
-    CurrentExhibitionInfo = GetExihibitionInfo()
-
-
-
 def GetExihibitionInfo():
     ExihibitionList = []
 
