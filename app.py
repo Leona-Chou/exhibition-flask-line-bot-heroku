@@ -100,8 +100,9 @@ def message_text(event):
         lists = ExhibitionInfo.GetExihibitionInfo()
         message = ''
         for list in lists:
-            message = message + list['Title'] + '\t' + list['StartDate'] + '\t' + list['EndDate'] + '\t' + list['Time'] + '\t' + list[
-            'Location'] + '\t' + list['ExhibitionLink'] + '\n'
+            message = message + '展名：' + list['Title'] + '\n' + '開始日：' + list['StartDate'] + '\n' + '結束日：' + \
+                      list['EndDate'] + '\n' + '時間：' + list['Time'] + '\n' + '地點：' + list['Location'] + '\n' + \
+                      list['ExhibitionLink'] + '\n\n'
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=message))
         print('1 get')
     else:
