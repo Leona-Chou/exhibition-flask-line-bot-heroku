@@ -91,10 +91,13 @@ def message_text(event):
     elif event.message.text == '功能':
         # line emoji代碼對照表 https://developers.line.biz/en/docs/messaging-api/emoji-list/#line-emoji-definitions
         line_bot_api.reply_message(event.reply_token, TextSendMessage(
-            text='\U0001F449輸入編號來查詢想要的資訊：\n\n1. 中正紀念堂展覽資訊\n\n(其他展覽資訊還在開發中，暫無提供\U0001F62D)'
+            text="\U0001F449輸入編號來查詢想要的資訊：\n\n1. 中正紀念堂展覽資訊\n\n(其他展覽資訊還在開發中，暫無提供\U0001F62D)"
         ))
+    elif event.message.text == '1':
+        list = ExhibitionMongo.GetExhibitions()
+        pass
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="reply: " + event.message.text))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="我不夠聰明，請輸入相關的關鍵詞或者點擊選單我才能理解唷~"))
         print('else')
 
 
