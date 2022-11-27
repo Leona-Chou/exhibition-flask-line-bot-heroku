@@ -56,25 +56,8 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
-    user_id = event.source.user_id
-    emoji = [
-        {
-            "index": 0,
-            "productId": "5ac1bfd5040ab15980c9b435",
-            "emojiId": "061"
-        },
-        {
-            "index": 1,
-            "productId": "5ac1bfd5040ab15980c9b435",
-            "emojiId": "061"
-        },
-        {
-            "index": 2,
-            "productId": "5ac1bfd5040ab15980c9b435",
-            "emojiId": "061"
-        }
-    ]
     # 存取user_id
+    user_id = event.source.user_id
     ExhibitionMongo.AddUserId(user_id)
 
     if event.message.text == 'test':  # 測試 text
@@ -93,16 +76,20 @@ def message_text(event):
     elif event.message.text == '功能':
         # line emoji代碼對照表 https://developers.line.biz/en/docs/messaging-api/emoji-list/#line-emoji-definitions
         line_bot_api.reply_message(event.reply_token, TextSendMessage(
-            text="\U0001F449輸入編號來查詢想要的資訊：\n\n1. 中正紀念堂展覽資訊\n\n(其他展覽資訊還在開發中，暫無提供\U0001F62D)"
+            text='\U0001F449輸入編號來查詢想要的資訊：\n\n1. 中正紀念堂展覽資訊\n\n(其他展覽資訊還在開發中，暫無提供\U0001F62D)'
         ))
         print('功能 get')
     elif event.message.text == '1':
         lists = ExhibitionInfo.GetExihibitionInfo()
         message = ''
         for list in lists:
-            message = message + '展名：' + list['Title'] + '\n' + '開始日：' + list['StartDate'] + '\n' + '結束日：' + \
-                      list['EndDate'] + '\n' + '時間：' + list['Time'] + '\n' + '地點：' + list['Location'] + '\n' + \
-                      list['ExhibitionLink'] + '\n\n'
+            message = message\
+                      + '展名：' + list['Title'] + '\n'\
+                      + '開始日：' + list['StartDate'] + '\n'\
+                      + '結束日：' + list['EndDate'] + '\n'\
+                      + '時間：' + list['Time'] + '\n'\
+                      + '地點：' + list['Location'] + '\n'\
+                      + list['ExhibitionLink'] + '\n\n'
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='中正紀念堂展覽'+message))
         print('1 get')
     else:
