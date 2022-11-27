@@ -34,7 +34,7 @@ def AddExhibition(ExhibitionList):
     db = InitMongo()
     for Exhibition in ExhibitionList:
         res = db.exhibitions.count_documents({'Title': Exhibition['Title']})  # 数据在mongo中出现的次数
-        if res == 0:  # 有新增的展覽資訊
+        if res == 0:  # 沒有在資料庫中，新增
             db.exhibitions.insert_one({
                 "Title": Exhibition['Title'],
                 "StartDate": Exhibition['StartDate'],
@@ -44,12 +44,9 @@ def AddExhibition(ExhibitionList):
                 "ExhibitionLink": Exhibition['ExhibitionLink'],
                 "ImgLink": Exhibition['ImgLink']
             })
-            # print('Exhibition success')  # TODO: 更新資料庫
-        elif False:  # 有展覽結束
-            # TODO: 將展覽資訊添加到展覽回顧資料表, 並從當前展覽資料表刪除
-            pass
-        else:  # 展覽資訊無異動, 無需做任何動作
-            # print('Exhibition existed')
+            print('Exhibition success')
+        else:  # 有在資料庫中，無異動
+            print('Exhibition existed')
             pass
 
 
