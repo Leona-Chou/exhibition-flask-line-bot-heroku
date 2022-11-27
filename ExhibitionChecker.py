@@ -19,3 +19,5 @@ def CheckExhibition(ExhibitionList):
             pass
             print('Exhibition existed')
             pass
+
+CheckExhibition(ExhibitionList)
