@@ -26,7 +26,7 @@ def AddUserId(UserId):
         db.users.insert_one({
             "User_Id": UserId
         })
-        # print('User_Id success')
+        print('User_Id success')
 
 
 # 新增展覽資訊
