@@ -100,10 +100,10 @@ def message_text(event):
         lists = ExhibitionInfo.GetExihibitionInfo()
         message = ''
         for list in lists:
-            message = message + '展名：' + list['Title'] + '\n' + '開始日：' + list['StartDate'] + '\n' + '結束日：' + \
+            message = message + list['Title'] + '\n' + '開始日：' + list['StartDate'] + '\n' + '結束日：' + \
                       list['EndDate'] + '\n' + '時間：' + list['Time'] + '\n' + '地點：' + list['Location'] + '\n' + \
                       list['ExhibitionLink'] + '\n\n'
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=message))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='中正紀念堂展覽'+message))
         print('1 get')
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="我不夠聰明，請輸入相關的關鍵詞或者點擊選單我才能理解唷~a"))
