@@ -106,7 +106,7 @@ def message_text(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='中正紀念堂展覽'+message))
         print('1 get')
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="我不夠聰明，請輸入相關的關鍵詞或者點擊選單我才能理解唷~a"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="我不夠聰明，請輸入相關的關鍵詞或者點擊選單我才能理解唷~"))
         print('else')
 
 
