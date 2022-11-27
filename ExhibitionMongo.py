@@ -32,19 +32,16 @@ def AddUserId(UserId):
 # 新增展覽資訊
 def AddExhibition(ExhibitionList):
     db = InitMongo()
-    for Exhibition in ExhibitionList:
-        res = db.exhibitions.count_documents({'Title': Exhibition['Title']})  # 数据在mongo中出现的次数
-        if res == 0:  # 沒有在資料庫中，新增
-            db.exhibitions.insert_one({
-                "Title": Exhibition['Title'],
-                "StartDate": Exhibition['StartDate'],
-                "EndDate": Exhibition['EndDate'],
-                "Time": Exhibition['Time'],
-                "Location": Exhibition['Location'],
-                "ExhibitionLink": Exhibition['ExhibitionLink'],
-                "ImgLink": Exhibition['ImgLink']
-            })
-            print('Exhibition success')
+    db.exhibitions.insert_one({
+        "Title": ExhibitionList['Title'],
+        "StartDate": ExhibitionList['StartDate'],
+        "EndDate": ExhibitionList['EndDate'],
+        "Time": ExhibitionList['Time'],
+        "Location": ExhibitionList['Location'],
+        "ExhibitionLink": ExhibitionList['ExhibitionLink'],
+        "ImgLink": ExhibitionList['ImgLink']
+    })
+    print('add success')
 
 
 # 刪除展覽資訊
@@ -53,12 +50,14 @@ def RemoveExhibition(Title):
     db.exhibitions.delete_one({
         "Title": Title
     })
+    print('remove success')
 
 
 # 取得展覽資訊
 def GetExhibitions():
     db = InitMongo()
     cursor = db.exhibitions.find()
+    print('get exhibition info')
     return list(cursor)
 
 
