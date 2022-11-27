@@ -100,7 +100,7 @@ def message_text(event):
         message = ''
         for list in lists:
             message + list['Title'] + '\t' + list['StartDate'] + '\t' + list['EndDate'] + '\t' + list['Time'] + '\t' + list[
-            'Location'] + '\t' + list['ExhibitionLink']
+            'Location'] + '\t' + list['ExhibitionLink'] + '\n'
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=message))
         print('1 get')
     else:
