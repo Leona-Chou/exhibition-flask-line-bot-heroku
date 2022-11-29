@@ -5,6 +5,7 @@ import os
 import sys
 from argparse import ArgumentParser
 from flask import Flask, request, abort
+from flask_apscheduler import APScheduler
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -51,6 +52,20 @@ def callback():
         abort(400)
 
     return 'OK'
+
+
+class Config(object):
+    JOBS = [
+        {
+            'id': 'ExhibitionChecker',
+            'func': 'ExhibitionChecker:CheckExhibition',
+            'args': (ExhibitionInfo.GetExihibitionInfo()),
+            'trigger': 'interval',
+            'seconds': 3
+        }
+    ]
+
+    SCHEDULER_API_ENABLED = True
 
 
 @handler.add(MessageEvent, message=TextMessage)
@@ -103,5 +118,10 @@ if __name__ == "__main__":
     arg_parser.add_argument('-p', '--port', default=8000, help='port')
     arg_parser.add_argument('-d', '--debug', default=False, help='debug')
     options = arg_parser.parse_args()
+
+    app.config.from_object(Config())
+    scheduler = APScheduler()
+    scheduler.init_app(app)
+    scheduler.start()
 
     app.run(debug=options.debug, port=options.port)
