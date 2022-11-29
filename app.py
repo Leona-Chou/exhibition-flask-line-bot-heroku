@@ -89,10 +89,10 @@ def message_text(event):
                       + '\n時間：' + list['Time']\
                       + '\n地點：' + list['Location'] + '\n'\
                       + list['ExhibitionLink'] + '\n\n'
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='中正紀念堂展覽'+message))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='中正紀念堂展覽\n\n'+message))
         print('1 get')
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入相關的關鍵詞或者點擊選單我才能理解唷~"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入相關的關鍵詞或者點擊選單唷~"))
         print('else')
 
 
