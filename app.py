@@ -84,8 +84,8 @@ def message_text(event):
         for list in lists:
             message = message\
                       + '展名：' + list['Title'] + '\n'\
-                      + '開始日：' + datetime.strftime(list['StartDate'], '%Y-%m-%d') + '\n'\
-                      + '結束日：' + datetime.strftime(list['EndDate'], '%Y-%m-%d') + '\n'\
+                      + '開始日：' + datetime.strftime(list['StartDate'], '%Y/%m/%d') + '\n'\
+                      + '結束日：' + datetime.strftime(list['EndDate'], '%Y/%m/%d') + '\n'\
                       + '時間：' + list['Time'] + '\n'\
                       + '地點：' + list['Location'] + '\n'\
                       + list['ExhibitionLink'] + '\n\n'
