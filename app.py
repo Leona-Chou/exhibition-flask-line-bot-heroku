@@ -83,11 +83,11 @@ def message_text(event):
         message = ''
         for list in lists:
             message = message\
-                      + '展名：' + list['Title'] + '\n'\
-                      + '開始日：' + datetime.strftime(list['StartDate'], '%Y/%m/%d') + '\n'\
-                      + '結束日：' + datetime.strftime(list['EndDate'], '%Y/%m/%d') + '\n'\
-                      + '時間：' + list['Time'] + '\n'\
-                      + '地點：' + list['Location'] + '\n'\
+                      + '展名：' + list['Title']\
+                      + '\n開始日：' + datetime.strftime(list['StartDate'], '%Y/%m/%d')\
+                      + '\n結束日：' + datetime.strftime(list['EndDate'], '%Y/%m/%d')\
+                      + '\n時間：' + list['Time']\
+                      + '\n地點：' + list['Location'] + '\n'\
                       + list['ExhibitionLink'] + '\n\n'
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='中正紀念堂展覽'+message))
         print('1 get')
