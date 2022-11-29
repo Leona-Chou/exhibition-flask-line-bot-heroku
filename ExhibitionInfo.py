@@ -39,9 +39,11 @@ def GetExihibitionInfo():
                 'EndDate': EndDate,      # 結束日
                 'Time': DateTime,        # 時間
                 'Location': Location,    # 地點
-                'ExhibitionLink': Link,  # 連結
+                'ExhibitionLink': Link   # 連結
                 # 'ImgLink': ImgLink       # 圖片
             }
             ExihibitionList.append(Dict)
 
     return ExihibitionList
+
+# print(GetExihibitionInfo())
