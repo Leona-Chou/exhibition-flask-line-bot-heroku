@@ -1,9 +1,12 @@
 # 檢查是否有新資料
 # 不同展館
+import ExhibitionInfo
 import ExhibitionMongo
 import sched
 from datetime import datetime
 import time
+
+ExhibitionList = ExhibitionInfo.GetExihibitionInfo()
 
 # 檢查展覽資訊是否異動
 def CheckExhibition(ExhibitionList):
@@ -23,6 +26,7 @@ def CheckExhibition(ExhibitionList):
             pass
 
 
+'''
 # 取得現在時間
 now_time = datetime.datetime.now();
 # 設定預計執行的時間
@@ -39,3 +43,4 @@ schedule = sched.scheduler(time.time, time.sleep)
 # 設定 schedule 及執行
 schedule.enter(timer_start_time, 0, CheckExhibition,())
 schedule.run()
+'''
