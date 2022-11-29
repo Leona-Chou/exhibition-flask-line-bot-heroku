@@ -22,11 +22,20 @@ def InitMongo():
 def AddUserId(UserId):
     db = InitMongo()
     res = db.users.count_documents({'User_Id': UserId})  # 数据在mongo中出现的次数
+
     if res == 0:
         db.users.insert_one({
             "User_Id": UserId
         })
         print('User_Id success')
+
+
+# 取得用戶ID
+def GetUserId():
+    db = InitMongo()
+    cursor = db.users.find()
+    print('get exhibition info')
+    return list(cursor)
 
 
 # 新增展覽資訊
