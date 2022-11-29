@@ -25,3 +25,4 @@ tzlocal==4.2
 urllib3==1.26.13
 Werkzeug==2.2.2
 gunicorn==19.3.0
+APScheduler==3.0.0
