@@ -33,12 +33,12 @@ def AddUserId(UserId):
 def AddExhibition(ExhibitionList):
     db = InitMongo()
     db.exhibitions.insert_one({
-        "Title": ExhibitionList[0],
-        "StartDate": ExhibitionList[1],
-        "EndDate": ExhibitionList[2],
-        "Time": ExhibitionList[3],
-        "Location": ExhibitionList[4],
-        "ExhibitionLink": ExhibitionList[5]
+        "Title": ExhibitionList['Title'],
+        "StartDate": ExhibitionList['StartDate'],
+        "EndDate": ExhibitionList['EndDate'],
+        "Time": ExhibitionList['Time'],
+        "Location": ExhibitionList['Location'],
+        "ExhibitionLink": ExhibitionList['ExhibitionLink']
         # "ImgLink": ExhibitionList['ImgLink']
     })
     print('add success')
@@ -61,7 +61,7 @@ def GetExhibitions():
     return list(cursor)
 
 
-AddExhibition(ExhibitionList)
+# AddExhibition(ExhibitionList)
 # RemoveExhibition("2330")
 # print(GetExhibitions())
 # AddUserId('U355e7537484ebee1d8b05fa42be9defd')
