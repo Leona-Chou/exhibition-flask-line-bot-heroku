@@ -36,22 +36,35 @@ line_bot_api = LineBotApi(channel_access_token)
 handler = WebhookHandler(channel_secret)
 
 
-@app.route("/callback", methods=['POST'])
+@app.route("/callback", methods=['GET', 'POST'])
 def callback():
-    # get X-Line-Signature header value
-    signature = request.headers['X-Line-Signature']
+    
+    # 處理GET
+    if request.method == 'GET':
 
-    # get request body as text
-    body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
+        outstr = '''
+            <h3>Line機器人-CEB102課程小幫手</h3>
+            <span>您好！ 關於此Line機器人的詳細資訊可參考<a href='https://github.com/SuYenTing/linebot-ceb102-heroku'>GitHub專案說明</a></span>
+            '''
+        return outstr
 
-    # handle webhook body
-    try:
-        handler.handle(body, signature)
-    except InvalidSignatureError:
-        abort(400)
+    # 處理POST
+    elif request.method == 'POST':
 
-    return 'OK'
+        # get X-Line-Signature header value
+        signature = request.headers['X-Line-Signature']
+
+        # get request body as text
+        body = request.get_data(as_text=True)
+        app.logger.info("Request body: " + body)
+
+        # handle webhook body
+        try:
+            handler.handle(body, signature)
+        except InvalidSignatureError:
+            abort(400)
+
+        return 'OK'
 
 
 @handler.add(MessageEvent, message=TextMessage)
