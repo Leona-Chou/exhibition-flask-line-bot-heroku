@@ -28,6 +28,7 @@ def CheckExhibition(ExhibitionList):
 
         if res == 0:  # 沒有在資料庫中，有新展覽
             ExhibitionMongo.AddExhibition(Exhibition)
+
         elif interval == 7:  # 結束前7日提醒
             message1 = message1 \
                        + '展名：' + Exhibition['Title'] \
@@ -70,7 +71,7 @@ def CheckExhibition(ExhibitionList):
 def DoNotSleep():
     url = "https://leonalinebot.herokuapp.com/callback"
     r = requests.get(url)
-    print('clock')
+    # print('clock')
 
 '''
 # 取得現在時間
@@ -95,10 +96,10 @@ schedule.run()
 sched = BlockingScheduler()
 
 # 每日執行
-sched.add_job(CheckExhibition, trigger='cron', args=(ExhibitionList,), id='CheckExhibition_job', hour=11, minute=30)
+sched.add_job(CheckExhibition, trigger='interval', args=(ExhibitionList,), id='CheckExhibition_job', hour=11, minute=30)
 
 # 防止自動休眠
-sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', seconds=20)
+sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', second=20)
 
 # 啟動排程
 sched.start()
