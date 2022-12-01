@@ -102,4 +102,4 @@ sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='tmrCl
 sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=1)
 
 # 啟動排程
-sched.run()
+sched.start()
