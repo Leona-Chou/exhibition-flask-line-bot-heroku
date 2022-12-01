@@ -68,7 +68,7 @@ def CheckExhibition(ExhibitionList):
 
 # 防止睡眠
 def DoNotSleep():
-    url = "https://linebotceb102.herokuapp.com/"
+    url = "https://leonalinebot.herokuapp.com/callback"
     r = requests.get(url)
 
 '''
@@ -94,7 +94,7 @@ schedule.run()
 sched = BlockingScheduler()
 
 # 每日執行
-sched.add_job(CheckExhibition, trigger='cron', args=(ExhibitionList,), id='morning_job', hour=8, minute=45)
+sched.add_job(CheckExhibition, trigger='cron', args=(ExhibitionList,), id='CheckExhibition_job', hour=8, minute=45)
 
 # 防止自動休眠
-sched.add_job(DoNotSleep, trigger='interval', id='doNotSleeps_job', minutes=20)
+sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=20)
