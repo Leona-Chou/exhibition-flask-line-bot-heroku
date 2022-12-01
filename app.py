@@ -38,7 +38,7 @@ handler = WebhookHandler(channel_secret)
 
 @app.route("/callback", methods=['GET', 'POST'])
 def callback():
-    
+
     # 處理GET
     if request.method == 'GET':
 
