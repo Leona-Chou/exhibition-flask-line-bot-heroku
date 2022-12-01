@@ -69,9 +69,9 @@ def CheckExhibition(ExhibitionList):
 
 # 防止睡眠
 def DoNotSleep():
-    url = "https://leonalinebot.herokuapp.com/"
+    line_bot_api.push_message('U355e7537484ebee1d8b05fa42be9defd', TextSendMessage(text='DoNotSleep'))
+    url = "https://leonalinebot.herokuapp.com/callback"
     r = requests.get(url)
-    print('clock')
 
 '''
 # 取得現在時間
