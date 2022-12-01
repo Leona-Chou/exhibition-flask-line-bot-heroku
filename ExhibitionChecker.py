@@ -3,14 +3,14 @@
 import os
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
-
+from apscheduler.schedulers.blocking import BlockingScheduler
+import requests
+from datetime import datetime
 import ExhibitionInfo
 import ExhibitionMongo
-import sched
-from datetime import datetime
-import time
 
-# ExhibitionList = ExhibitionInfo.GetExihibitionInfo()
+
+ExhibitionList = ExhibitionInfo.GetExihibitionInfo()
 channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
 line_bot_api = LineBotApi(channel_access_token)
 Users = ExhibitionMongo.GetUserId()
@@ -66,6 +66,11 @@ def CheckExhibition(ExhibitionList):
             line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有3天將結束：\n\n' + message2))
 
 
+# 防止睡眠
+def DoNotSleep():
+    url = "https://linebotceb102.herokuapp.com/"
+    r = requests.get(url)
+
 '''
 # 取得現在時間
 now_time = datetime.datetime.now();
@@ -84,3 +89,12 @@ schedule = sched.scheduler(time.time, time.sleep)
 schedule.enter(timer_start_time, 0, CheckExhibition,())
 schedule.run()
 '''
+
+# 開始建立排程任務
+sched = BlockingScheduler()
+
+# 每日執行
+sched.add_job(CheckExhibition, trigger='cron', args=(ExhibitionList,), id='morning_job', hour=8, minute=45)
+
+# 防止自動休眠
+sched.add_job(DoNotSleep, trigger='interval', id='doNotSleeps_job', minutes=20)
