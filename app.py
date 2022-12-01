@@ -43,8 +43,7 @@ def callback():
     if request.method == 'GET':
 
         outstr = '''
-            <h3>Line機器人-CEB102課程小幫手</h3>
-            <span>您好！ 關於此Line機器人的詳細資訊可參考<a href='https://github.com/SuYenTing/linebot-ceb102-heroku'>GitHub專案說明</a></span>
+            <h3>Line機器人</h3>
             '''
         return outstr
     
