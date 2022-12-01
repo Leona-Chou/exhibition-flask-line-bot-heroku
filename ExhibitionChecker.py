@@ -99,7 +99,7 @@ sched = BlockingScheduler()
 # sched.add_job(CheckExhibition, trigger='interval', args=(ExhibitionList,), id='CheckExhibition_job', seconds=20)
 
 # 防止自動休眠
-sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', seconds=20)
+sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', seconds=5)
 
 # 啟動排程
 sched.start()
