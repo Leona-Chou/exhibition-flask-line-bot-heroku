@@ -70,6 +70,7 @@ def CheckExhibition(ExhibitionList):
 def DoNotSleep():
     url = "https://leonalinebot.herokuapp.com/callback"
     r = requests.get(url)
+    print(r)
 
 '''
 # 取得現在時間
