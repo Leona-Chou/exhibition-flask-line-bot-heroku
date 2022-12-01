@@ -99,3 +99,6 @@ sched.add_job(CheckExhibition, trigger='cron', args=(ExhibitionList,), id='Check
 
 # 防止自動休眠
 sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=20)
+
+# 啟動排程
+sched.start()
