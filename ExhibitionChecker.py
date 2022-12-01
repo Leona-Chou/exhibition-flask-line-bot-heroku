@@ -69,7 +69,7 @@ def CheckExhibition(ExhibitionList):
 
 # 防止睡眠
 def DoNotSleep():
-    url = "https://leonalinebot.herokuapp.com/callback"
+    url = "https://leonalinebot.herokuapp.com/"
     r = requests.get(url)
     # print('clock')
 
