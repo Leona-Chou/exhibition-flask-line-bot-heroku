@@ -71,7 +71,7 @@ def CheckExhibition(ExhibitionList):
 def DoNotSleep():
     url = "https://leonalinebot.herokuapp.com/"
     r = requests.get(url)
-    # print('clock')
+    print('clock')
 
 '''
 # 取得現在時間
@@ -96,7 +96,7 @@ schedule.run()
 sched = BlockingScheduler()
 
 # 每日執行
-sched.add_job(CheckExhibition, trigger='interval', args=(ExhibitionList,), id='CheckExhibition_job', seconds=20)
+# sched.add_job(CheckExhibition, trigger='interval', args=(ExhibitionList,), id='CheckExhibition_job', seconds=20)
 
 # 防止自動休眠
 sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', seconds=20)
