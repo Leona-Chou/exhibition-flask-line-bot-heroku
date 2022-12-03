@@ -73,7 +73,7 @@ def CheckExhibition(ExhibitionList):
             ExhibitionMongo.AddHistories(Exhibition)  # 存入 histories
             ExhibitionMongo.RemoveExhibition(Exhibition['Title'])  # 從 exhibitions 刪除
             print('exhibition end')
-            
+
     # 傳送訊息給用戶
     for User in Users:
         if messageAdd != '':  # 新增展覽
@@ -97,7 +97,7 @@ sched = BlockingScheduler()
 
 # 每日執行
 # sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='tmrClass_job', hour=3, minute=30)  # 每日10:30執行
-sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='tmrClass_job', hour=8, minute=30)  # test
+sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='tmrClass_job', hour=8, minute=34)  # test:15:30
 
 # 防止自動休眠
 sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=20)
