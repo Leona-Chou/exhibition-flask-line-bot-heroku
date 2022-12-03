@@ -73,6 +73,7 @@ def CheckExhibition(ExhibitionList):
             ExhibitionMongo.AddHistories(Exhibition)  # 存入 histories
             ExhibitionMongo.RemoveExhibition(Exhibition['Title'])  # 從 exhibitions 刪除
             print('exhibition end')
+            
     # 傳送訊息給用戶
     for User in Users:
         if messageAdd != '':  # 新增展覽
