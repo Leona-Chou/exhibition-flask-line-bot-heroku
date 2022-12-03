@@ -47,8 +47,8 @@ def AddExhibition(ExhibitionList):
         "EndDate": ExhibitionList['EndDate'],
         "Time": ExhibitionList['Time'],
         "Location": ExhibitionList['Location'],
-        "ExhibitionLink": ExhibitionList['ExhibitionLink']
-        # "ImgLink": ExhibitionList['ImgLink']
+        "ExhibitionLink": ExhibitionList['ExhibitionLink'],
+        "ImgLink": ExhibitionList['ImgLink']
     })
     print('add success')
 
@@ -68,6 +68,20 @@ def GetExhibitions():
     cursor = db.exhibitions.find()
     print('get exhibition info')
     return list(cursor)
+
+
+# 將展覽資訊存入 histories
+def AddHistories(ExhibitionList):
+    db = InitMongo()
+    db.exhibitions.insert_one({
+        "Title": ExhibitionList['Title'],
+        "StartDate": ExhibitionList['StartDate'],
+        "EndDate": ExhibitionList['EndDate'],
+        "Time": ExhibitionList['Time'],
+        "Location": ExhibitionList['Location'],
+        "ExhibitionLink": ExhibitionList['ExhibitionLink'],
+        "ImgLink": ExhibitionList['ImgLink']
+    })
 
 
 # AddExhibition(ExhibitionList)
