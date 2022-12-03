@@ -89,7 +89,7 @@ def message_text(event):
         ExhibitionList = ExhibitionInfo.GetExihibitionInfo()
         message = ''
         for Exhibition in ExhibitionList:
-            m1 = re.match(r'^中正紀念堂.$', Exhibition['Location'])
+            m1 = re.match(r'中正紀念堂', Exhibition['Location'])
             if m1:
                 message = message\
                           + '展名：' + Exhibition['Title']\
@@ -105,7 +105,7 @@ def message_text(event):
         ExhibitionList = ExhibitionInfo.GetExihibitionInfo()
         message = ''
         for Exhibition in ExhibitionList:
-            m1 = re.match(r'^當代藝術館.$', Exhibition['Location'])
+            m1 = re.match(r'當代藝術館', Exhibition['Location'])
             if m1:
                 message = message \
                           + '展名：' + Exhibition['Title'] \
