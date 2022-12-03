@@ -35,13 +35,12 @@ def GetExihibitionInfo():
             ImgLink = ImgLinkTmp.find('img').get('src')
 
             Dict = {
-                'Title': Title,          # 展名
-                'StartDate': StartDate,  # 起始日
-                'EndDate': EndDate,      # 結束日
-                'Time': DateTime,        # 時間
-                'Location': '中正紀念堂-'+Location,    # 地點
-                'ExhibitionLink': Link,  # 連結
-                'ImgLink': ImgLink       # 圖片
+                'Title': Title,                    # 展名
+                'StartDate': StartDate,            # 起始日
+                'EndDate': EndDate,                # 結束日
+                'Time': DateTime,                  # 時間
+                'Location': '中正紀念堂-'+Location,  # 地點
+                'ExhibitionLink': Link,            # 連結
             }
             ExihibitionList.append(Dict)
 
@@ -52,8 +51,8 @@ def GetExihibitionInfo():
 
     # 從 HTML 抓取資訊
     Titles = Soup.find_all('h3', class_='imgTitle')  # 展名
-    Years = Soup.find_all('span', class_='year')
-    Dates = Soup.find_all('p', class_='day')
+    Years = Soup.find_all('span', class_='year')     # 年份
+    Dates = Soup.find_all('p', class_='day')         # 日期
     ExihibitionList = []
     URL = 'https://www.mocataipei.org.tw/tw/ExhibitionAndEvent/Info'
 
@@ -61,16 +60,14 @@ def GetExihibitionInfo():
         Title = Titles[i].text
         StartMonth = Dates[(i + 1) * 2 - 1].text.split(' ')
         EndMonth = Dates[(i + 1) * 2].text.split(' ')
-        # print(StartMonth)
-        # print(EndMonth)
         StartDate = f'{Years[i * 2 - 2].text}/{StartMonth[0]}/{StartMonth[2]}'
         EndDate = f'{Years[i * 2 - 1].text}/{EndMonth[0]}/{EndMonth[2]}'
         Dict = {
-            'Title': Title,  # 展名
-            'StartDate': StartDate,  # 起始日
-            'EndDate': EndDate,  # 結束日
-            'Time': '10:00~18:00',  # 時間
-            'Location': '當代藝術館',  # 地點
+            'Title': Title,                      # 展名
+            'StartDate': StartDate,              # 起始日
+            'EndDate': EndDate,                  # 結束日
+            'Time': '10:00~18:00',               # 時間
+            'Location': '當代藝術館',              # 地點
             'ExhibitionLink': f'{URL}/{Title}',  # 連結
         }
         ExihibitionList.append(Dict)
