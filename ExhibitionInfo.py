@@ -39,7 +39,7 @@ def GetExihibitionInfo():
                 'StartDate': StartDate,  # 起始日
                 'EndDate': EndDate,      # 結束日
                 'Time': DateTime,        # 時間
-                'Location': Location,    # 地點
+                'Location': '中正紀念堂-'+Location,    # 地點
                 'ExhibitionLink': Link,  # 連結
                 'ImgLink': ImgLink       # 圖片
             }
