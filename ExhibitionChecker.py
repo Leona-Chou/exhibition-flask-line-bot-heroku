@@ -44,7 +44,7 @@ def CheckExhibition(ExhibitionList):
                        + '\n時間：' + Exhibition['Time'] \
                        + '\n地點：' + Exhibition['Location'] + '\n' \
                        + Exhibition['ExhibitionLink'] + '\n\n'
-            print('will be end in 7 days')
+            print('Will be end in 7 days')
 
         elif interval == 3:  # 結束前3日提醒
             message2 = message2 \
@@ -54,7 +54,7 @@ def CheckExhibition(ExhibitionList):
                        + '\n時間：' + Exhibition['Time'] \
                        + '\n地點：' + Exhibition['Location'] \
                        + Exhibition['ExhibitionLink']
-            print('will be end in 3 days')
+            print('Will be end in 3 days')
 
         elif interval == 1:
             message3 = message3 \
@@ -64,7 +64,7 @@ def CheckExhibition(ExhibitionList):
                        + '\n時間：' + Exhibition['Time'] \
                        + '\n地點：' + Exhibition['Location'] \
                        + Exhibition['ExhibitionLink']
-            print('will be end in 1 days')
+            print('Will be end in 1 days')
 
     # 展覽結束，將資料存入展覽回顧(histories)，並從當前展覽(exhibitions)刪除
     GetExhibition = ExhibitionMongo.GetExhibitions()
@@ -76,14 +76,17 @@ def CheckExhibition(ExhibitionList):
 
     # 傳送訊息給用戶
     for User in Users:
-        if messageAdd != '':  # 新增展覽
-            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='更新以下新的展覽：\n\n' + messageAdd))
-        if message1 != '':  # 還有7天
-            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有7天將結束：\n\n' + message1))
-        if message2 != '':  # 還有3天
-            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有3天將結束：\n\n' + message2))
-        if message3 != '':  # 還有1天
-            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽明天即將結束：\n\n' + message3))
+        if messageAdd != '' or message1 != '' or message2 != '' or message3 != '':  # 新增展覽
+            if messageAdd != '':
+                line_bot_api.push_message(User["User_Id"], TextSendMessage(text='更新以下新的展覽：\n\n' + messageAdd))
+            if message1 != '':  # 還有7天
+                line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有7天將結束：\n\n' + message1))
+            if message2 != '':  # 還有3天
+                line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有3天將結束：\n\n' + message2))
+            if message3 != '':  # 還有1天
+                line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽明天即將結束：\n\n' + message3))
+        else:
+            print('Nothing changed')
 
 
 # 防止睡眠
