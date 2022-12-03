@@ -15,8 +15,10 @@ Users = ExhibitionMongo.GetUserId()
 
 # 檢查展覽資訊是否異動
 def CheckExhibition(ExhibitionList):
+
     db = ExhibitionMongo.InitMongo()
     now = datetime.now()
+    GetExhibition = ExhibitionMongo.GetExhibitions()
     messageAdd = ''
     message1 = ''
     message2 = ''
@@ -67,12 +69,11 @@ def CheckExhibition(ExhibitionList):
             print('Will be end in 1 days')
 
     # 展覽結束，將資料存入展覽回顧(histories)，並從當前展覽(exhibitions)刪除
-    GetExhibition = ExhibitionMongo.GetExhibitions()
-    for Exhibitionn in GetExhibition:
-        if ((Exhibitionn['EndDate'] - now).days + 1) == 0:
-            ExhibitionMongo.AddHistories(Exhibitionn)  # 存入 histories
-            ExhibitionMongo.RemoveExhibition(Exhibitionn['Title'])  # 從 exhibitions 刪除
-            print('exhibition end')
+    # for Exhibitionn in GetExhibition:
+    #     if ((Exhibitionn['EndDate'] - now).days + 1) == 0:
+    #         ExhibitionMongo.AddHistories(Exhibitionn)  # 存入 histories
+    #         ExhibitionMongo.RemoveExhibition(Exhibitionn['Title'])  # 從 exhibitions 刪除
+    #         print('exhibition end')
 
     # 傳送訊息給用戶
     for User in Users:
