@@ -45,5 +45,3 @@ def GetExihibitionInfo():
             ExihibitionList.append(Dict)
 
     return ExihibitionList
-
-# print(GetExihibitionInfo())
