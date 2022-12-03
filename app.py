@@ -88,10 +88,12 @@ def message_text(event):
     elif event.message.text == '展喵有什麼功能？':
         # line emoji代碼對照表 https://developers.line.biz/en/docs/messaging-api/emoji-list/#line-emoji-definitions
         line_bot_api.reply_message(event.reply_token, TextSendMessage(
-            text='\U0001F449輸入編號來查詢想要的資訊：\n\n1. 中正紀念堂展覽資訊\n\n(其他展覽資訊還在開發中，暫無提供\U0001F62D)'
+            text='''
+            \U0001F449輸入編號來查詢想要的資訊：\n\n1. 中正紀念堂展覽資訊\n2. 當代藝術館展覽資訊\n\n(其他展覽資訊還在開發中，暫無提供\U0001F62D)
+            '''
         ))
         print('功能 get')
-    elif event.message.text == '1':
+    elif event.message.text == '1':  # 中正紀念堂
         lists = ExhibitionInfo.GetExihibitionInfo()
         message = ''
         for list in lists:
@@ -104,6 +106,8 @@ def message_text(event):
                       + list['ExhibitionLink'] + '\n\n'
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='中正紀念堂展覽\n\n'+message))
         print('1 get')
+    elif False:  # 當代藝術館
+        pass
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入相關的關鍵詞或者點擊選單唷~"))
         print('else')
