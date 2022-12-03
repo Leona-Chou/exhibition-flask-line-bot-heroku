@@ -39,16 +39,8 @@ handler = WebhookHandler(channel_secret)
 @app.route("/callback", methods=['GET', 'POST'])
 def callback():
 
-    # 處理GET
-    if request.method == 'GET':
-
-        outstr = '''
-            <h3>Line機器人</h3>
-            '''
-        return outstr
-    
     # 處理POST
-    elif request.method == 'POST':
+    if request.method == 'POST':
 
         # get X-Line-Signature header value
         signature = request.headers['X-Line-Signature']
@@ -64,6 +56,14 @@ def callback():
             abort(400)
 
         return 'OK'
+
+    # 處理GET
+    elif request.method == 'GET':
+
+        outstr = '''
+            <h3>Line機器人</h3>
+            '''
+        return outstr
 
 
 @handler.add(MessageEvent, message=TextMessage)
