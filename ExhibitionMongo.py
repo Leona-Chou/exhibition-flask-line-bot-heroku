@@ -73,7 +73,7 @@ def GetExhibitions():
 # 將展覽資訊存入 histories
 def AddHistories(ExhibitionList):
     db = InitMongo()
-    db.exhibitions.insert_one({
+    db.histories.insert_one({
         "Title": ExhibitionList['Title'],
         "StartDate": ExhibitionList['StartDate'],
         "EndDate": ExhibitionList['EndDate'],
