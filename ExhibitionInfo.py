@@ -53,7 +53,6 @@ def GetExihibitionInfo():
     Titles = Soup.find_all('h3', class_='imgTitle')  # 展名
     Years = Soup.find_all('span', class_='year')     # 年份
     Dates = Soup.find_all('p', class_='day')         # 日期
-    ExihibitionList = []
     URL = 'https://www.mocataipei.org.tw/tw/ExhibitionAndEvent/Info'
 
     for i in range(len(Titles)):
