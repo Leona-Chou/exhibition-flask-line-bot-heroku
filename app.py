@@ -87,6 +87,7 @@ def message_text(event):
 
     elif event.message.text == '1':  # 中正紀念堂
         lists = ExhibitionInfo.GetExihibitionInfo()
+        message = ''
         for list in lists:
             m1 = re.match(r'^中正紀念堂.$', list['Location'])
             if m1:
@@ -102,6 +103,7 @@ def message_text(event):
 
     elif event.message.text == '2':  # 當代藝術館
         lists = ExhibitionInfo.GetExihibitionInfo()
+        message = ''
         for list in lists:
             m1 = re.match(r'^當代藝術館.$', list['Location'])
             if m1:
