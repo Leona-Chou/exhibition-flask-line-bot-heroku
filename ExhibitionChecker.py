@@ -82,7 +82,7 @@ def CheckExhibition(ExhibitionList):
         if message2 != '':
             line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有3天將結束：\n\n' + message2))
         if message3 != '':
-            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有1天將結束：\n\n' + message3))
+            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽即將結束：\n\n' + message3))
 
 
 
@@ -118,7 +118,7 @@ sched = BlockingScheduler()
 sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='tmrClass_job', hour=5, minute=23)
 
 # 防止自動休眠
-sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=27)
+sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=28)
 
 # 啟動排程
 sched.start()
