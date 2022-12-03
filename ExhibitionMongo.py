@@ -48,7 +48,7 @@ def AddExhibition(ExhibitionList):
         "Time": ExhibitionList['Time'],
         "Location": ExhibitionList['Location'],
         "ExhibitionLink": ExhibitionList['ExhibitionLink'],
-        "ImgLink": ExhibitionList['ImgLink']
+        # "ImgLink": ExhibitionList['ImgLink']
     })
     print('add success')
 
@@ -80,5 +80,5 @@ def AddHistories(ExhibitionList):
         "Time": ExhibitionList['Time'],
         "Location": ExhibitionList['Location'],
         "ExhibitionLink": ExhibitionList['ExhibitionLink'],
-        "ImgLink": ExhibitionList['ImgLink']
+        # "ImgLink": ExhibitionList['ImgLink']
     })
