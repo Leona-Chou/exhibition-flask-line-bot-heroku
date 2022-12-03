@@ -102,8 +102,8 @@ sched = BlockingScheduler()
 
 # 每日執行
 # sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='CheckExhibition_job', hour=3, minute=30)  # 每日10:30執行
-# sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='CheckExhibition_job', hour=8, minute=45)  # test:15:30
-sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='interval', id='CheckExhibition_job', minutes=1)  # test
+sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='CheckExhibition_job', hour=9, minute=16)  # test:15:30
+# sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='interval', id='CheckExhibition_job', minutes=1)  # test
 
 # 防止自動休眠
 sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=20)
