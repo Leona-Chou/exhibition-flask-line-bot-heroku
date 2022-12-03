@@ -20,14 +20,23 @@ def CheckExhibition(ExhibitionList):
     db = ExhibitionMongo.InitMongo()
     now = datetime.now()
     # Cursor = False
+    messageAdd = ''
     message1 = ''
     message2 = ''
+    message3 = ''
     for Exhibition in ExhibitionList:
         res = db.exhibitions.count_documents({'Title': Exhibition['Title']})  # 数据在mongo中出现的次数
         interval = (Exhibition['EndDate'] - now).days + 1
 
         if res == 0:  # 沒有在資料庫中，有新展覽
             ExhibitionMongo.AddExhibition(Exhibition)
+            messageAdd = messageAdd \
+                       + '展名：' + Exhibition['Title'] \
+                       + '\n開始日：' + datetime.strftime(Exhibition['StartDate'], '%Y/%m/%d') \
+                       + '\n結束日：' + datetime.strftime(Exhibition['EndDate'], '%Y/%m/%d') \
+                       + '\n時間：' + Exhibition['Time'] \
+                       + '\n地點：' + Exhibition['Location'] + '\n' \
+                       + Exhibition['ExhibitionLink'] + '\n\n'
 
         elif interval == 7:  # 結束前7日提醒
             message1 = message1 \
@@ -38,7 +47,6 @@ def CheckExhibition(ExhibitionList):
                        + '\n地點：' + Exhibition['Location'] + '\n' \
                        + Exhibition['ExhibitionLink'] + '\n\n'
             print('will be end in 7 days')
-            pass
 
         elif interval == 3:  # 結束前3日提醒
             message2 = message2\
@@ -49,22 +57,33 @@ def CheckExhibition(ExhibitionList):
                       + '\n地點：' + Exhibition['Location'] \
                       + Exhibition['ExhibitionLink']
             print('will be end in 3 days')
-            pass
+        elif interval == 1:
+            message3 = message3 \
+                       + '展名：' + Exhibition['Title'] \
+                       + '\n開始日：' + datetime.strftime(Exhibition['StartDate'], '%Y/%m/%d') \
+                       + '\n結束日：' + datetime.strftime(Exhibition['EndDate'], '%Y/%m/%d') \
+                       + '\n時間：' + Exhibition['Time'] \
+                       + '\n地點：' + Exhibition['Location'] \
+                       + Exhibition['ExhibitionLink']
 
         elif interval == 0:  # 展覽結束，將資料存入展覽回顧(historyex)，並從當前展覽(exhibitions)刪除
             print('exhibition end')
-            pass
 
         else:  # 展覽資訊無異動
-            print('exhibition info not change')
+            # print('exhibition info not change')
             pass
 
     # 傳送訊息給用戶
     for User in Users:
+        if messageAdd != '':
+            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='有更新的展覽：\n\n' + messageAdd))
         if message1 != '':
             line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有7天將結束：\n\n' + message1))
         if message2 != '':
             line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有3天將結束：\n\n' + message2))
+        if message3 != '':
+            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有1天將結束：\n\n' + message3))
+
 
 
 # 防止睡眠
@@ -96,7 +115,7 @@ sched = BlockingScheduler()
 
 # 每日執行
 # sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='tmrClass_job', hour=21, minute=0)
-sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='interval', id='tmrClass_job', seconds=3)
+sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='tmrClass_job', seconds=10)
 
 # 防止自動休眠
 sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=20)
