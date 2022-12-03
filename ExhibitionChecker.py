@@ -106,7 +106,7 @@ sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='Check
 # sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='interval', id='CheckExhibition_job', minutes=1)  # test
 
 # 防止自動休眠
-sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', seconds=5)
+sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=20)
 
 # 啟動排程
 sched.start()
