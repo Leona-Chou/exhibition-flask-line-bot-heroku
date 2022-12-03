@@ -19,7 +19,6 @@ Users = ExhibitionMongo.GetUserId()
 def CheckExhibition(ExhibitionList):
     db = ExhibitionMongo.InitMongo()
     now = datetime.now()
-    # Cursor = False
     messageAdd = ''
     message1 = ''
     message2 = ''
@@ -65,6 +64,7 @@ def CheckExhibition(ExhibitionList):
                        + '\n時間：' + Exhibition['Time'] \
                        + '\n地點：' + Exhibition['Location'] \
                        + Exhibition['ExhibitionLink']
+            print('will be end in 1 days')
 
         elif interval == 0:  # 展覽結束，將資料存入展覽回顧(historyex)，並從當前展覽(exhibitions)刪除
             print('exhibition end')
@@ -76,13 +76,13 @@ def CheckExhibition(ExhibitionList):
     # 傳送訊息給用戶
     for User in Users:
         if messageAdd != '':
-            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='有更新的展覽：\n\n' + messageAdd))
+            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='有更以下新的展覽：\n\n' + messageAdd))
         if message1 != '':
             line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有7天將結束：\n\n' + message1))
         if message2 != '':
             line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有3天將結束：\n\n' + message2))
         if message3 != '':
-            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽即將結束：\n\n' + message3))
+            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽明天將結束：\n\n' + message3))
 
 
 
