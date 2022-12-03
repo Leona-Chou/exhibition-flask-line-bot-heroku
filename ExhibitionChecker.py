@@ -102,7 +102,7 @@ sched = BlockingScheduler(timezone="Asia/Taipei")
 
 # 每日執行
 # sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='CheckExhibition_job', hour=3, minute=30)  # 每日10:30執行
-sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='CheckExhibition_job', hour=17, minute=8)  # test
+sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='CheckExhibition_job', hour=10, minute=30)  # test
 # sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='interval', id='CheckExhibition_job', minutes=1)  # test
 
 # 防止自動休眠
