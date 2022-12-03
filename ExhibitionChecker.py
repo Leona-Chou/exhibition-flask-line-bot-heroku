@@ -118,7 +118,7 @@ sched = BlockingScheduler()
 sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='tmrClass_job', hour=5, minute=23)
 
 # 防止自動休眠
-sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=20)
+sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=27)
 
 # 啟動排程
 sched.start()
