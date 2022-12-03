@@ -94,6 +94,7 @@ def CheckExhibition(ExhibitionList):
 def DoNotSleep():
     url = "https://leonalinebot.herokuapp.com/callback"
     r = requests.get(url)
+    print('DoNotSleep')
 
 
 # 開始建立排程任務
@@ -105,7 +106,7 @@ sched = BlockingScheduler()
 # sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='interval', id='CheckExhibition_job', seconds=10)  # test
 
 # 防止自動休眠
-sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=20)
+sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=1)
 
 # 啟動排程
 sched.start()
