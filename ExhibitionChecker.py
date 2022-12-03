@@ -66,10 +66,13 @@ def CheckExhibition(ExhibitionList):
                        + Exhibition['ExhibitionLink']
             print('will be end in 1 days')
 
-        # 展覽結束，將資料存入展覽回顧(historyex)，並從當前展覽(exhibitions)刪除
-        if interval == 0:
+    # 展覽結束，將資料存入展覽回顧(histories)，並從當前展覽(exhibitions)刪除
+    GetExhibition = ExhibitionMongo.GetExhibitions()
+    for Exhibition in GetExhibition:
+        if ((Exhibition['EndDate'] - now).days + 1) == 0:
+            ExhibitionMongo.AddHistories(Exhibition)  # 存入 histories
+            ExhibitionMongo.RemoveExhibition(Exhibition['Title'])  # 從 exhibitions 刪除
             print('exhibition end')
-
     # 傳送訊息給用戶
     for User in Users:
         if messageAdd != '':  # 新增展覽
