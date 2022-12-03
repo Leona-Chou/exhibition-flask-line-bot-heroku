@@ -1,2 +1,2 @@
-web: gunicorn app:app
+web web: gunicorn app:app
 clock: python ExhibitionChecker.py
