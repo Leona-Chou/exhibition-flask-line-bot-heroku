@@ -95,7 +95,8 @@ def DoNotSleep():
 sched = BlockingScheduler()
 
 # 每日執行
-sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='tmrClass_job', hour=3, minute=30)  # 每日10:30執行
+# sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='tmrClass_job', hour=3, minute=30)  # 每日10:30執行
+sched.add_job(CheckExhibition, args=(ExhibitionList,), trigger='cron', id='tmrClass_job', hour=8, minute=30)  # test
 
 # 防止自動休眠
 sched.add_job(DoNotSleep, trigger='interval', id='DoNotSleeps_job', minutes=20)
