@@ -72,14 +72,14 @@ def CheckExhibition(ExhibitionList):
 
     # 傳送訊息給用戶
     for User in Users:
-        if messageAdd != '':
-            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='有更新以下新的展覽：\n\n' + messageAdd))
-        if message1 != '':
+        if messageAdd != '':  # 新增展覽
+            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='更新以下新的展覽：\n\n' + messageAdd))
+        if message1 != '':  # 還有7天
             line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有7天將結束：\n\n' + message1))
-        if message2 != '':
+        if message2 != '':  # 還有3天
             line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有3天將結束：\n\n' + message2))
-        if message3 != '':
-            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽明天將結束：\n\n' + message3))
+        if message3 != '':  # 還有1天
+            line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽明天即將結束：\n\n' + message3))
 
 
 # 防止睡眠
