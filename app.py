@@ -86,7 +86,6 @@ def message_text(event):
         print('功能 get')
 
     elif event.message.text == '1':  # 中正紀念堂
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="展喵快速搜尋中⋯"))
         ExhibitionList = ExhibitionInfo.GetExihibitionInfo()
         message = ''
         for Exhibition in ExhibitionList:
@@ -102,7 +101,6 @@ def message_text(event):
         print('1 get')
 
     elif event.message.text == '2':  # 當代藝術館
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="展喵快速搜尋中⋯"))
         ExhibitionList = ExhibitionInfo.GetExihibitionInfo()
         message = ''
         for Exhibition in ExhibitionList:
