@@ -8,7 +8,6 @@ MoCATaipeiURL = 'https://www.mocataipei.org.tw/tw/ExhibitionAndEvent/Exhibitions
 def GetExihibitionInfo():
     ExihibitionList = []
 
-
     # 中正紀念堂展館
     for Page in range(1, 3):
         URL = f'{CKSMH_URL}_{Page}.html'
