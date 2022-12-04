@@ -29,32 +29,29 @@ def CheckExhibition(ExhibitionList):
 
         if res == 0:  # 沒有在資料庫中，有新展覽
             ExhibitionMongo.AddExhibition(Exhibition)
-            messageAdd = messageAdd \
-                         + '展名：' + Exhibition['Title'] \
-                         + '\n開始日：' + datetime.strftime(Exhibition['StartDate'], '%Y/%m/%d') \
-                         + '\n結束日：' + datetime.strftime(Exhibition['EndDate'], '%Y/%m/%d') \
-                         + '\n時間：' + Exhibition['Time'] \
-                         + '\n地點：' + Exhibition['Location'] + '\n' \
-                         + Exhibition['ExhibitionLink'] + '\n\n'
-
-        elif interval == 7:  # 結束前7日提醒
-            message1 = message1 \
-                       + '展名：' + Exhibition['Title'] \
+            messageAdd += '展名：' + Exhibition['Title'] \
                        + '\n開始日：' + datetime.strftime(Exhibition['StartDate'], '%Y/%m/%d') \
                        + '\n結束日：' + datetime.strftime(Exhibition['EndDate'], '%Y/%m/%d') \
                        + '\n時間：' + Exhibition['Time'] \
                        + '\n地點：' + Exhibition['Location'] + '\n' \
                        + Exhibition['ExhibitionLink'] + '\n\n'
+
+        elif interval == 7:  # 結束前7日提醒
+            message1 += '展名：' + Exhibition['Title'] \
+                     + '\n開始日：' + datetime.strftime(Exhibition['StartDate'], '%Y/%m/%d') \
+                     + '\n結束日：' + datetime.strftime(Exhibition['EndDate'], '%Y/%m/%d') \
+                     + '\n時間：' + Exhibition['Time'] \
+                     + '\n地點：' + Exhibition['Location'] + '\n' \
+                     + Exhibition['ExhibitionLink'] + '\n\n'
             print('Will be end in 7 days')
 
         elif interval == 3:  # 結束前3日提醒
-            message2 = message2 \
-                       + '展名：' + Exhibition['Title'] \
-                       + '\n開始日：' + datetime.strftime(Exhibition['StartDate'], '%Y/%m/%d') \
-                       + '\n結束日：' + datetime.strftime(Exhibition['EndDate'], '%Y/%m/%d') \
-                       + '\n時間：' + Exhibition['Time'] \
-                       + '\n地點：' + Exhibition['Location'] \
-                       + Exhibition['ExhibitionLink']
+            message2 += '展名：' + Exhibition['Title'] \
+                     + '\n開始日：' + datetime.strftime(Exhibition['StartDate'], '%Y/%m/%d') \
+                     + '\n結束日：' + datetime.strftime(Exhibition['EndDate'], '%Y/%m/%d') \
+                     + '\n時間：' + Exhibition['Time'] \
+                     + '\n地點：' + Exhibition['Location'] \
+                     + Exhibition['ExhibitionLink']
             print('Will be end in 3 days')
 
     # 展覽結束，將資料存入展覽回顧(histories)，並從當前展覽(exhibitions)刪除
