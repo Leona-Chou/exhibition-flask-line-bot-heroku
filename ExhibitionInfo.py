@@ -6,7 +6,7 @@ CKSMH_URL = 'https://www.cksmh.gov.tw/activitysoonlist_369'  # 中正紀念堂�
 MoCATaipeiURL = 'https://www.mocataipei.org.tw/tw/ExhibitionAndEvent/Exhibitions/Current%20Exhibition'  # 當代藝術館
 
 def GetExihibitionInfo():
-    ExihibitionList = []
+    ExhibitionList = []
 
     # 中正紀念堂展館
     for Page in range(1, 3):
@@ -41,7 +41,7 @@ def GetExihibitionInfo():
                 'Location': '中正紀念堂-'+Location,  # 地點
                 'ExhibitionLink': Link,            # 連結
             }
-            ExihibitionList.append(Dict)
+            ExhibitionList.append(Dict)
 
 
     # 當代藝術館
@@ -58,9 +58,9 @@ def GetExihibitionInfo():
         Title = Titles[i].text
         StartMonth = Dates[(i + 1) * 2 - 1].text.split(' ')
         EndMonth = Dates[(i + 1) * 2].text.split(' ')
-        StartDateTxt = f'{Years[i * 2 - 2].text}/{StartMonth[0]}/{StartMonth[2]}'
+        StartDateTxt = f'{Years[(i + 1) * 2 - 2].text}/{StartMonth[0]}/{StartMonth[2]}'
         StartDate = datetime.strptime(StartDateTxt, '%Y/%m/%d')
-        EndDateTxt = f'{Years[i * 2 - 1].text}/{EndMonth[0]}/{EndMonth[2]}'
+        EndDateTxt = f'{Years[(i + 1) * 2 - 1].text}/{EndMonth[0]}/{EndMonth[2]}'
         EndDate = datetime.strptime(EndDateTxt, '%Y/%m/%d')
 
         Dict = {
@@ -71,6 +71,6 @@ def GetExihibitionInfo():
             'Location': '當代藝術館',              # 地點
             'ExhibitionLink': f'{URL}/{Title}',  # 連結
         }
-        ExihibitionList.append(Dict)
+        ExhibitionList.append(Dict)
 
-    return ExihibitionList
+    return ExhibitionList
