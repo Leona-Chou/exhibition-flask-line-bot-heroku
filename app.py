@@ -74,11 +74,7 @@ def message_text(event):
     ExhibitionMongo.AddUserId(user_id)
     message = ''
 
-    if event.message.text == 'test':  # 測試 text
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text + ' success!'))
-        print('test success')
-
-    elif event.message.text == '展喵有什麼功能？':
+    if event.message.text == '展喵有什麼功能？':
         # line emoji代碼對照表 https://developers.line.biz/en/docs/messaging-api/emoji-list/#line-emoji-definitions
         line_bot_api.reply_message(event.reply_token, TextSendMessage(
             text='\U0001F449輸入編號來查詢想要的資訊：\n\n1. 中正紀念堂展覽資訊\n2. 當代藝術館展覽資訊\n\n(其他展覽資訊還在開發中，暫無提供\U0001F62D)'
