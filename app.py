@@ -113,7 +113,7 @@ def message_text(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='當代藝術館展覽：\n\n' + message))
         print('2 get')
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入相關的關鍵詞或者點擊選單唷~"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入相關的關鍵字或者點擊選單唷~"))
         print('else')
 
 
