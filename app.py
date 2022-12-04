@@ -92,29 +92,28 @@ def message_text(event):
         for Exhibition in ExhibitionList:
             m1 = re.match(r'中正紀念堂', Exhibition['Location'])
             if m1:
-                message = message\
-                          + '展名：' + Exhibition['Title']\
-                          + '\n開始日：' + datetime.strftime(Exhibition['StartDate'], '%Y/%m/%d')\
-                          + '\n結束日：' + datetime.strftime(Exhibition['EndDate'], '%Y/%m/%d')\
-                          + '\n時間：' + Exhibition['Time']\
-                          + '\n地點：' + Exhibition['Location'] + '\n'\
-                          + Exhibition['ExhibitionLink'] + '\n\n'
+                message += '展名：' + Exhibition['Title']\
+                        + '\n開始日：' + datetime.strftime(Exhibition['StartDate'], '%Y/%m/%d')\
+                        + '\n結束日：' + datetime.strftime(Exhibition['EndDate'], '%Y/%m/%d')\
+                        + '\n時間：' + Exhibition['Time']\
+                        + '\n地點：' + Exhibition['Location'] + '\n'\
+                        + Exhibition['ExhibitionLink'] + '\n\n'
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='中正紀念堂展覽：\n\n'+message))
         print('1 get')
 
     elif event.message.text == '2':  # 當代藝術館
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="展喵快速搜尋中⋯"))
         ExhibitionList = ExhibitionInfo.GetExihibitionInfo()
         message = ''
         for Exhibition in ExhibitionList:
             m1 = re.match(r'當代藝術館', Exhibition['Location'])
             if m1:
-                message = message \
-                          + '展名：' + Exhibition['Title'] \
-                          + '\n開始日：' + datetime.strftime(Exhibition['StartDate'], '%Y/%m/%d') \
-                          + '\n結束日：' + datetime.strftime(Exhibition['EndDate'], '%Y/%m/%d') \
-                          + '\n時間：' + Exhibition['Time'] \
-                          + '\n地點：' + Exhibition['Location'] + '\n' \
-                          + Exhibition['ExhibitionLink'] + '\n\n'
+                message += '展名：' + Exhibition['Title'] \
+                        + '\n開始日：' + datetime.strftime(Exhibition['StartDate'], '%Y/%m/%d') \
+                        + '\n結束日：' + datetime.strftime(Exhibition['EndDate'], '%Y/%m/%d') \
+                        + '\n時間：' + Exhibition['Time'] \
+                        + '\n地點：' + Exhibition['Location'] + '\n' \
+                        + Exhibition['ExhibitionLink'] + '\n\n'
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='當代藝術館展覽：\n\n' + message))
         print('2 get')
     else:
