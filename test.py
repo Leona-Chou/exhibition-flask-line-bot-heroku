@@ -1,12 +1,11 @@
-from datetime import datetime
-from ExhibitionMongo import InitMongo
+import os
+from linebot import LineBotApi
+from linebot.models import TextSendMessage
+import ExhibitionMongo
 
-db = InitMongo()
-db.exhibitions.insert_one({
-    "Title": "共識覺",
-    "StartDate": datetime.strptime("2022/11/05", '%Y/%m/%d'),
-    "EndDate": datetime.strptime("2022/01/29", '%Y/%m/%d'),
-    "Time": "10:00~18:00",
-    "Location": "當代藝術館",
-    "ExhibitionLink": "https://www.mocataipei.org.tw/tw/ExhibitionAndEvent/Info/共識覺"
-})
+# 發送訊息
+channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
+line_bot_api = LineBotApi(channel_access_token)
+Users = ExhibitionMongo.GetUserId()
+for User in Users:
+    line_bot_api.push_message(User["User_Id"], TextSendMessage(text='安安，目前正在測試，如果有跳出任何怪怪的訊息請不要理它~'))
