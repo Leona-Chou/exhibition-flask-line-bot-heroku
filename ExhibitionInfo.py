@@ -29,9 +29,6 @@ def GetExihibitionInfo():
             DateTime = DateList[4]
             Location = Locations[i].text.strip('地點：')
             Link = Soup.find('a', title=Title+'「另開新視窗」').get('href')
-            # PictureLinkTmp = Soup.select(f'#fontsize > div:nth-child(3) > ul > li:nth-child({i+1}) > dl > dt > a > span > img')
-            # ImgLinkTmp = Soup.find('ul', class_='exhibition-list')
-            # ImgLink = ImgLinkTmp.find('img').get('src')
 
             Dict = {
                 'Title': Title,                    # 展名
