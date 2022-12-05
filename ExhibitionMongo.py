@@ -21,7 +21,8 @@ def InitMongo():
 # 新增用戶ID
 def AddUserId(UserId):
     db = InitMongo()
-    res = db.users.count_documents({'User_Id': UserId})  # 数据在mongo中出现的次数
+    # 数据在mongo中出现的次数
+    res = db.users.count_documents({'User_Id': UserId})
 
     if res == 0:
         db.users.insert_one({
