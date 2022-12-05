@@ -6,7 +6,6 @@ import sys
 import re
 from argparse import ArgumentParser
 from flask import Flask, request, abort
-from flask_apscheduler import APScheduler
 from linebot import (
     LineBotApi, WebhookHandler
 )
