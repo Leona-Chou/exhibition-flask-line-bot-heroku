@@ -71,7 +71,6 @@ def message_text(event):
     # 存取user_id
     user_id = event.source.user_id
     ExhibitionMongo.AddUserId(user_id)
-    message = ''
 
     if event.message.text == '展喵有什麼功能？':
         # line emoji代碼對照表 https://developers.line.biz/en/docs/messaging-api/emoji-list/#line-emoji-definitions
