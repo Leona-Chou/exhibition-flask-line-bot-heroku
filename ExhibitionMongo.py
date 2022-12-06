@@ -39,7 +39,7 @@ def GetUserId():
     return list(cursor)
 
 
-# 新增展覽資訊
+# 新增展覽資訊 exhibitions
 def AddExhibition(ExhibitionList):
     db = InitMongo()
     db.exhibitions.insert_one({
@@ -53,7 +53,7 @@ def AddExhibition(ExhibitionList):
     print('add success')
 
 
-# 刪除展覽資訊
+# 刪除展覽資訊 exhibitions
 def RemoveExhibition(Title):
     db = InitMongo()
     db.exhibitions.delete_one({
@@ -62,7 +62,7 @@ def RemoveExhibition(Title):
     print('remove success')
 
 
-# 取得展覽資訊
+# 取得展覽資訊 exhibitions
 def GetExhibitions():
     db = InitMongo()
     cursor = db.exhibitions.find()
@@ -70,7 +70,7 @@ def GetExhibitions():
     return list(cursor)
 
 
-# 將展覽資訊存入 histories
+# 展覽結束後將展覽資訊存入 histories
 def AddHistories(ExhibitionList):
     db = InitMongo()
     db.histories.insert_one({
