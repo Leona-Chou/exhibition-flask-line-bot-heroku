@@ -1,3 +1,4 @@
+# 爬取展覽資訊
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -19,7 +20,7 @@ def GetExihibitionInfo():
         Dates = Soup.find_all('span', class_='date')          # 展期
         Locations = Soup.find_all('span', class_='location')  # 地點
 
-        # 處理資料並存入 dictionary
+        # 處理資料並存入 list
         for i in range(len(Titles)):
             Title = Titles[i].text
             Date = Dates[i].text
