@@ -21,7 +21,6 @@ def CheckExhibition(ExhibitionList):
     GetExhibition = ExhibitionMongo.GetExhibitions()
     messageAdd = ''
     message1 = ''
-    # message2 = ''
 
     for Exhibition in ExhibitionList:
         res = db.exhibitions.count_documents({'Title': Exhibition['Title']})  # 数据在mongo中出现的次数
@@ -45,15 +44,6 @@ def CheckExhibition(ExhibitionList):
                      + Exhibition['ExhibitionLink'] + '\n\n'
             print('Will be end in 7 days')
 
-        # elif interval == 3:  # 結束前3日提醒
-        #     message2 += '展名：' + Exhibition['Title'] \
-        #              + '\n開始日：' + datetime.strftime(Exhibition['StartDate'], '%Y/%m/%d') \
-        #              + '\n結束日：' + datetime.strftime(Exhibition['EndDate'], '%Y/%m/%d') \
-        #              + '\n時間：' + Exhibition['Time'] \
-        #              + '\n地點：' + Exhibition['Location'] \
-        #              + Exhibition['ExhibitionLink']
-        #     print('Will be end in 3 days')
-
     # 展覽結束，將資料存入展覽回顧(histories)，並從當前展覽(exhibitions)刪除
     for Exhibitionn in GetExhibition:
         if ((Exhibitionn['EndDate'] - now).days + 1) <= 0:
@@ -70,8 +60,6 @@ def CheckExhibition(ExhibitionList):
                 line_bot_api.push_message(User["User_Id"], TextSendMessage(text='更新以下新的展覽：\n\n' + messageAdd))
             if message1 != '':  # 還有7天
                 line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有7天將結束：\n\n' + message1))
-            # if message2 != '':  # 還有3天
-            #     line_bot_api.push_message(User["User_Id"], TextSendMessage(text='以下展覽還有3天將結束：\n\n' + message2))
         else:
             print('Nothing changed')
 
